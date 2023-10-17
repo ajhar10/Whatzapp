@@ -15,4 +15,4 @@ export const api= createApi({
     })
 })
 
-export const {usePostAiTextMutaion} = api;
+export const {usePostAiTextMutation} = api;
