@@ -1,12 +1,15 @@
 import { PaperAirplaneIcon, PaperClipIcon, XMarkIcon } from "@heroicons/react/24/solid";
-import { useState } from "react"
+import React, { useState } from "react"
 import Dropzone from "react-dropzone";
 
 const MessageFormUI = ({
   setAttachment,
   message,
   handleChange,
-  handleSubmit,}) => {
+  handleSubmit,
+  handleKeyDown,
+  appendText
+}) => {
  const [preview, setPreview] = useState("");
 
   return (
@@ -35,8 +38,17 @@ const MessageFormUI = ({
           type="text" 
           value={message} 
           onChange={handleChange} 
+          onKeyDown={handleKeyDown}
           placeholder="Send a Message ....."
           />
+           {appendText && (
+            <input
+              className="message-form-assist"
+              type="text"
+              disabled="disabled"
+              value={`${message} ${appendText}`}
+            />
+          )}
         </div>
         <div className="message-form-icons">
         <Dropzone
